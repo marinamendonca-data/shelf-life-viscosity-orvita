@@ -32,4 +32,12 @@ To model viscosity loss over time under different storage conditions and estimat
 ## Author
 
 Marina Mendonça  
-Food Science Data Analyst
+Food Science Data Analyst## Results
+
+### Viscosity degradation over time
+
+![Viscosity degradation](images/viscosity_degradation.png)
+
+### Batch-to-batch variability
+
+![Batch variability](images/batch_variability.png)
