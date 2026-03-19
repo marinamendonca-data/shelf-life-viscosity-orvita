@@ -4,11 +4,11 @@ This project demonstrates how data analysis can be applied to evaluate product s
 
 ## Objective
 
-To model viscosity loss over time under different storage conditions and estimate product shelf life using data-driven approaches. The study also evaluates temperature influence on degradation behavior, supporting stability assessment and decision-making.
+To model viscosity loss over time under different storage conditions and evaluate the impact of temperature on product stability. The study aims to support shelf life estimation using a data-driven approach combined with food science principles.
 
 ## Dataset
 
-The dataset simulates industrial conditions and includes:
+The dataset represents a controlled experimental study and includes:
 
 - Multiple production batches  
 - Storage at different temperatures (25°C, 35°C, 45°C)  
@@ -17,14 +17,14 @@ The dataset simulates industrial conditions and includes:
 
 ## Methodology
 
-The analysis followed a structured workflow:
+The analysis followed these steps:
 
 - Data cleaning and preprocessing  
 - Exploratory data analysis  
-- Visualization of degradation trends  
-- Evaluation of variability between batches  
-- Regression-based interpretation of degradation behavior  
-- Conceptual application of temperature dependence (Arrhenius approach)  
+- Visualization of viscosity degradation over time  
+- Evaluation of batch-to-batch variability  
+- Interpretation of temperature effect on degradation kinetics  
+- Conceptual application of Arrhenius behavior  
 
 ## Project Structure
 
@@ -32,31 +32,29 @@ The analysis followed a structured workflow:
 
 ### Viscosity degradation over time
 
-The results show a consistent decrease in viscosity over storage time, with a clear acceleration of degradation at higher temperatures. This behavior indicates strong temperature dependence and aligns with expected physicochemical degradation mechanisms in semi-solid systems.
+The results show a clear reduction in viscosity throughout storage, with faster degradation observed at higher temperatures. This behavior is consistent with physicochemical changes typically observed in semi-solid food systems, such as structural breakdown and increased molecular mobility.
 
-![Viscosity degradation](images/Viscosity_degradation.png)
+![Viscosity degradation](images/Viscosity-degradation.png)
 
 ### Batch-to-batch variability
 
-Variability between batches remains controlled, suggesting process consistency under the evaluated conditions. The observed dispersion is within expected limits for experimental and industrial scenarios.
+Batch variability remained relatively controlled, indicating consistency in the production process. The observed dispersion is expected in real-world manufacturing conditions and does not compromise the overall degradation trend.
 
 ![Batch variability](images/Variability.png)
 
-## Key Insights
+## Discussion
 
-- Temperature significantly accelerates viscosity degradation  
-- Higher storage temperatures reduce product stability  
-- The degradation pattern supports predictive modeling approaches  
-- Data analysis enables objective shelf life estimation  
-- Variability between batches is manageable and does not compromise interpretation  
+Temperature plays a critical role in viscosity degradation. As storage temperature increases, the rate of structural breakdown accelerates, leading to a faster loss of viscosity. This is consistent with kinetic principles commonly applied in food stability studies.
+
+The degradation profile suggests that the system is temperature-dependent and can be modeled using predictive approaches. From a food science perspective, this type of behavior is often associated with changes in macromolecular structure, water mobility, and potential destabilization of the product matrix.
+
+The relatively low variability between batches reinforces the reliability of the observed trend and supports the use of the dataset for shelf life estimation.
 
 ## Conclusion
 
-This study demonstrates how combining data analysis with food science principles can support shelf life evaluation in a structured and quantitative way.
+This project demonstrates how data analysis can be integrated with food science knowledge to evaluate product stability in a structured and quantitative way.
 
-The results confirm that temperature is a critical factor in viscosity degradation, directly impacting product stability. By applying data-driven approaches, it is possible to estimate shelf life more reliably, reduce uncertainty, and support decision-making in product development and quality control.
-
-This type of analysis is directly applicable to real industrial scenarios, contributing to improved process understanding, risk reduction, and optimization of storage conditions.
+The results highlight temperature as a key factor affecting viscosity degradation and confirm that data-driven approaches can support more accurate shelf life predictions. This type of analysis is directly applicable to industrial scenarios, contributing to better decision-making, process optimization, and product quality control.
 
 ## Author
 
