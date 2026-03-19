@@ -1,150 +1,149 @@
-# Predição de Shelf-Life via Cinética de Degradação de Viscosidade
+# Shelf-Life Prediction via Viscosity Degradation Kinetics
 
-Este projeto demonstra como a análise de dados pode ser aplicada para avaliar a estabilidade de um sistema alimentício semissólido (matriz análoga a extratos/purês) e prever sua vida de prateleira com base na degradação da viscosidade.
+This project demonstrates how data analysis can be applied to evaluate the stability of a semi-solid food system (matrix analogous to purées/extracts) and predict its shelf life based on viscosity degradation.
 
-A predição de shelf-life é essencial para definir validade comercial, reduzir perdas logísticas e garantir a qualidade do produto ao longo da cadeia de distribuição.
+Shelf-life prediction is essential for defining commercial validity, reducing logistical losses, and ensuring product quality throughout the distribution chain.
 
 ---
 
-## Objetivo
+## Objective
 
-Modelar a perda de viscosidade ao longo do tempo sob diferentes condições de armazenamento e avaliar o impacto da temperatura na estabilidade do produto.
+To model viscosity loss over time under different storage conditions and evaluate the impact of temperature on product stability.
 
-O estudo busca suportar a estimativa de shelf-life utilizando uma abordagem orientada por dados, integrada a princípios de cinética química e ciência dos alimentos.
+The study aims to support shelf-life estimation using a data-driven approach integrated with chemical kinetics and food science principles.
 
 ---
 
 ## Dataset
 
-O conjunto de dados representa um estudo experimental controlado e inclui:
+The dataset represents a controlled experimental study and includes:
 
-- Múltiplos lotes de produção  
-- Armazenamento em diferentes temperaturas (25°C, 35°C, 45°C)  
-- Medições ao longo do tempo  
-- Valores de viscosidade (cP)  
-
----
-
-## Metodologia
-
-A análise foi estruturada em etapas organizadas, seguindo boas práticas de ciência de dados:
-
-- **Cleaning:** limpeza e padronização dos dados  
-- **EDA (Exploratory Data Analysis):** análise exploratória e identificação de padrões  
-- **Modeling:** modelagem da degradação e ajuste cinético  
-
-### Etapas específicas:
-
-- Limpeza e pré-processamento dos dados  
-- Visualização da degradação da viscosidade ao longo do tempo  
-- Avaliação da variabilidade entre lotes  
-- Cálculo da taxa de degradação (k)  
-- Aplicação do modelo de Arrhenius  
+- Multiple production batches  
+- Storage at different temperatures (25°C, 35°C, 45°C)  
+- Time-based measurements  
+- Viscosity values (cP)  
 
 ---
 
-## Resultados
+## Methodology
 
-### Degradação da viscosidade ao longo do tempo
+The analysis was structured into organized steps following data science best practices:
+
+- **Cleaning:** data cleaning and standardization  
+- **EDA (Exploratory Data Analysis):** pattern exploration and trend identification  
+- **Modeling:** degradation modeling and kinetic fitting  
+
+### Key steps:
+
+- Data preprocessing and validation  
+- Visualization of viscosity degradation over time  
+- Evaluation of batch-to-batch variability  
+- Estimation of degradation rate constants (k)  
+- Application of the Arrhenius model  
+
+---
+
+## Results
+
+### Viscosity Degradation Over Time
 
 ![Viscosity Degradation](images/Viscosity-degradation.png)
 
-**Figura 1:** Cinética de degradação da viscosidade relativa (%) sob três condições isotérmicas.
+**Figure 1:** Relative viscosity degradation (%) under three isothermal conditions.
 
-Os resultados mostram uma redução consistente na viscosidade ao longo do armazenamento, com degradação mais acelerada em temperaturas mais elevadas.
+A consistent reduction in viscosity was observed during storage, with faster degradation at higher temperatures.
 
-O **critério de fim de vida útil (end-of-shelf-life criterion)** foi definido como **80% da viscosidade inicial**.
+The **end-of-shelf-life criterion** was defined as **80% of the initial viscosity**.
 
-A partir desse limite:
+Based on this threshold:
 
-- A **45°C**, o produto atinge o critério em aproximadamente **5 meses**  
-- A **25°C**, o produto permanece acima do limite durante todo o período avaliado  
+- At **45°C**, the product reaches the limit at approximately **5 months**  
+- At **25°C**, the product remains above the limit throughout the evaluated period  
 
-Esse comportamento é consistente com alterações físico-químicas típicas, como quebra estrutural e aumento da mobilidade molecular.
+This behavior is consistent with physicochemical changes such as structural breakdown and increased molecular mobility.
 
 ---
 
-### Variabilidade entre lotes
+### Batch-to-Batch Variability
 
 ![Batch Variability](images/Batch-variability.png)
 
-**Figura 2:** Variabilidade entre lotes ao longo do armazenamento.
+**Figure 2:** Batch variability over storage time.
 
-A variabilidade entre lotes permaneceu relativamente controlada, indicando consistência no processo produtivo.
+Batch variability remained relatively controlled, indicating consistency in the production process.
 
-A dispersão observada é compatível com condições reais de manufatura e não compromete a tendência global de degradação.
+The observed dispersion is expected under real manufacturing conditions and does not compromise the overall degradation trend.
 
 ---
 
-### Modelagem de Arrhenius
+### Arrhenius Modeling
 
 ![Arrhenius Plot](images/Arrhenius.png)
 
-**Figura 3:** Relação de Arrhenius (ln(k) vs 1/T).
+**Figure 3:** Arrhenius relationship (ln(k) vs 1/T).
 
-A dependência térmica da degradação foi modelada pela equação:
+The regression showed **strong linearity (R² > 0.90)**, confirming the suitability of the kinetic model.
 
-A regressão linear apresentou **alta linearidade (R² > 0.90)**, indicando forte aderência ao modelo cinético.
+From the slope (-Ea/R), the **activation energy (Ea)** was estimated, demonstrating the sensitivity of the system to temperature.
 
-A partir do coeficiente angular da reta (-Ea/R), foi possível estimar a **Energia de Ativação (Ea)** do sistema, confirmando a sensibilidade do produto à temperatura.
+This model enables:
 
-Esse resultado permite:
-
-- Extrapolar a vida útil para temperaturas não testadas experimentalmente  
-- Prever comportamento em diferentes condições logísticas  
-- Aplicar conceitos de **Accelerated Shelf-Life Testing (ASLT)**  
+- Shelf-life extrapolation for non-tested temperatures  
+- Prediction of product behavior under different logistics scenarios  
+- Application of **Accelerated Shelf-Life Testing (ASLT)**  
 
 ---
 
-## Discussão
+## Discussion
 
-A temperatura demonstrou ser o principal fator de aceleração da degradação da viscosidade.
+Temperature was identified as the primary driver of viscosity degradation.
 
-O aumento térmico intensifica a mobilidade molecular e acelera a quebra da estrutura do sistema, levando à perda de consistência.
+Higher temperatures increase molecular mobility and accelerate structural breakdown, leading to a faster loss of consistency.
 
-O perfil cinético obtido indica um sistema claramente dependente da temperatura, compatível com mecanismos de degradação físico-química em alimentos semissólidos.
+The degradation profile indicates a temperature-dependent system consistent with physicochemical degradation mechanisms in semi-solid foods.
 
-A baixa variabilidade entre lotes reforça a robustez dos dados e a confiabilidade do modelo para aplicações preditivas.
-
----
-
-## Por que Python para Estabilidade de Alimentos?
-
-Nesta análise, a transição do Excel para o Python permitiu uma abordagem significativamente mais robusta e escalável:
-
-### Tratamento de Dados Complexos  
-O uso de `ffill()` e manipulação de strings com Pandas automatizou a limpeza de planilhas de coleta manual, evitando inconsistências como variações de temperatura ("25 C" vs "25°C").
-
-### Rigor Estatístico  
-A utilização de `scipy.stats` permitiu extrair métricas como **R², erros padrão e p-valores**, garantindo validação estatística da regressão.
-
-### Modelagem Preditiva de Arrhenius  
-A conversão automática para Kelvin e a linearização logarítmica permitiram calcular com precisão a **Energia de Ativação (Ea)**, parâmetro crítico para previsão de shelf-life.
-
-### Visualização de Variabilidade  
-A geração automatizada de gráficos com barras de erro (desvio padrão) permitiu análise simultânea de múltiplos lotes, algo operacionalmente complexo em ferramentas manuais.
-
-A integração de bibliotecas como **Pandas, Matplotlib e SciPy** transformou dados brutos em **insights acionáveis**, permitindo que o modelo não apenas descreva o comportamento passado, mas atue como ferramenta preditiva.
+The relatively low variability between batches reinforces the robustness of the dataset and the reliability of the predictive model.
 
 ---
 
-## Conclusão
+## Why Python for Food Stability Analysis?
 
-Este projeto demonstra como a integração entre ciência de dados e ciência dos alimentos permite avaliar a estabilidade de produtos de forma estruturada, quantitativa e preditiva.
+Transitioning from Excel to Python enabled a more robust and scalable analytical approach:
 
-Os resultados confirmam a temperatura como fator crítico na degradação da viscosidade e validam o uso de modelagem cinética para estimativa de shelf-life.
+### Complex Data Handling  
+Using Pandas (e.g., `ffill()` and string normalization) automated the cleaning of manually collected data, preventing inconsistencies such as "25 C" vs "25°C".
 
-Além disso, a abordagem permite:
+### Statistical Rigor  
+With `scipy.stats`, it was possible to extract **R², standard errors, and p-values**, ensuring proper validation of regression models.
 
-- Reduzir o tempo de testes experimentais em tempo real  
-- Utilizar testes acelerados (ASLT) para prever falhas  
-- Apoiar decisões industriais com base em dados  
+### Arrhenius Predictive Modeling  
+Automatic temperature conversion to Kelvin and logarithmic linearization allowed accurate estimation of the **activation energy (Ea)**.
 
-Esse tipo de análise é diretamente aplicável à indústria de alimentos, contribuindo para otimização de processos, redução de perdas e melhoria da qualidade do produto.
+### Variability Visualization  
+Automated plotting of standard deviation and error bars enabled simultaneous analysis of multiple batches, which would be time-consuming manually.
+
+The integration of **Pandas, Matplotlib, and SciPy** transformed raw experimental data into **actionable insights**, enabling predictive modeling of shelf life across different storage conditions.
 
 ---
 
-## Autor
+## Conclusion
+
+This project demonstrates how data analysis can be integrated with food science to evaluate product stability in a structured, quantitative, and predictive way.
+
+The results highlight temperature as a critical factor affecting viscosity degradation and validate the use of kinetic modeling for shelf-life estimation.
+
+This approach enables:
+
+- Reduction of real-time experimental testing  
+- Use of Accelerated Shelf-Life Testing (ASLT)  
+- Early prediction of product instability  
+
+Such analyses are directly applicable in industrial environments, supporting better decision-making, process optimization, and product quality control.
+
+---
+
+## Author
 
 **Marina Mendonça**  
 Food Science Data Analyst
+
