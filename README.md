@@ -1,43 +1,29 @@
 # Shelf Life Analysis – Viscosity Degradation
 
-This project demonstrates how data analysis can be applied to predict shelf life based on viscosity degradation.
+This project demonstrates how data analysis can be applied to evaluate product stability and predict shelf life based on viscosity degradation in a semi-solid food system.
 
 ## Objective
 
-To model viscosity loss over time under different storage conditions and estimate product shelf life using regression and Arrhenius-based approaches.
+To model viscosity loss over time under different storage conditions and estimate product shelf life using data-driven approaches. The study also evaluates temperature influence on degradation behavior, supporting stability assessment and decision-making.
 
 ## Dataset
 
-- Multiple batches
-- Different storage temperatures
-- Time-based measurements
-- Viscosity (cP)
+The dataset simulates industrial conditions and includes:
+
+- Multiple production batches  
+- Storage at different temperatures (25°C, 35°C, 45°C)  
+- Time-based measurements  
+- Viscosity values (cP)  
 
 ## Methodology
 
-- Data cleaning and preprocessing
-- Exploratory data analysis
-- Regression modeling
-- Shelf life estimation
-- Temperature effect analysis (Arrhenius concept)
+The analysis followed a structured workflow:
+
+- Data cleaning and preprocessing  
+- Exploratory data analysis  
+- Visualization of degradation trends  
+- Evaluation of variability between batches  
+- Regression-based interpretation of degradation behavior  
+- Conceptual application of temperature dependence (Arrhenius approach)  
 
 ## Project Structure
-
-## Key Insights
-
-- Temperature accelerates viscosity degradation
-- Predictive modeling allows shelf life estimation
-- Data-driven approach reduces product loss and improves decision-making
-
-## Author
-
-Marina Mendonça  
-Food Science Data Analyst## Results
-
-### Viscosity degradation over time
-
-![Viscosity degradation](images/viscosity_degradation.png)
-
-### Batch-to-batch variability
-
-![Batch variability](images/batch_variability.png)
