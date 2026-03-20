@@ -8,9 +8,7 @@ Shelf-life prediction is essential for defining commercial validity, reducing lo
 
 ## Objective
 
-To model viscosity loss over time under different storage conditions and evaluate the impact of temperature on product stability.
-
-The study aims to support shelf-life estimation using a data-driven approach integrated with chemical kinetics and food science principles.
+To model viscosity loss over time under different storage conditions, quantify degradation kinetics, and predict shelf life using a data-driven approach integrated with chemical kinetics and food science principles.
 
 ---
 
@@ -18,28 +16,30 @@ The study aims to support shelf-life estimation using a data-driven approach int
 
 The dataset represents a controlled experimental study and includes:
 
-- Multiple production batches  
-- Storage at different temperatures (25°C, 35°C, 45°C)  
-- Time-based measurements  
-- Viscosity values (cP)  
+* Multiple production batches
+* Storage at different temperatures (25°C, 35°C, 45°C)
+* Time-based measurements
+* **Viscosity values (cP – absolute measurements)**
 
 ---
 
 ## Methodology
 
-The analysis was structured into organized steps following data science best practices:
+The analysis was structured following data science best practices:
 
-- **Cleaning:** data cleaning and standardization  
-- **EDA (Exploratory Data Analysis):** pattern exploration and trend identification  
-- **Modeling:** degradation modeling and kinetic fitting  
+* **Cleaning:** data standardization and preprocessing
+* **EDA:** pattern exploration and degradation behavior
+* **Modeling:** kinetic modeling and regression analysis
 
 ### Key steps:
 
-- Data preprocessing and validation  
-- Visualization of viscosity degradation over time  
-- Evaluation of batch-to-batch variability  
-- Estimation of degradation rate constants (k)  
-- Application of the Arrhenius model  
+* Data preprocessing and validation
+* Conversion of viscosity to **relative viscosity (%)** for comparability
+* Visualization of degradation trends
+* Estimation of degradation rate constants (k)
+* Linear regression for shelf-life estimation (t₈₀)
+* Application of the Arrhenius model
+* Extrapolation to non-tested temperatures
 
 ---
 
@@ -51,16 +51,18 @@ The analysis was structured into organized steps following data science best pra
 
 **Figure 1:** Relative viscosity degradation (%) under three isothermal conditions.
 
+> ⚠️ Note: The graph represents **relative viscosity (%)**, normalized to the initial value (t=0).
+> Raw measurements are expressed in **cP (centipoise)**.
+
 A consistent reduction in viscosity was observed during storage, with faster degradation at higher temperatures.
 
 The **end-of-shelf-life criterion** was defined as **80% of the initial viscosity**.
 
-Based on this threshold:
+Estimated shelf life (t₈₀):
 
-- At **45°C**, the product reaches the limit at approximately **5 months**  
-- At **25°C**, the product remains above the limit throughout the evaluated period  
-
-This behavior is consistent with physicochemical changes such as structural breakdown and increased molecular mobility.
+* **25°C → ~27.5 months**
+* **35°C → ~11.8 months**
+* **45°C → ~6.4 months**
 
 ---
 
@@ -68,29 +70,50 @@ This behavior is consistent with physicochemical changes such as structural brea
 
 ![Batch Variability](images/Batch-variability.png)
 
-**Figure 2:** Batch variability over storage time.
+**Figure 2:** Variability across batches over time (mean ± standard deviation).
 
-Batch variability remained relatively controlled, indicating consistency in the production process.
+Batch variability remained controlled across all conditions, indicating consistency in the production process.
 
-The observed dispersion is expected under real manufacturing conditions and does not compromise the overall degradation trend.
+The observed dispersion is expected in real manufacturing environments and does not compromise the overall degradation trend.
 
 ---
 
-### Arrhenius Modeling
+### Arrhenius Modeling and Thermal Sensitivity
 
 ![Arrhenius Plot](images/Arrhenius.png)
 
 **Figure 3:** Arrhenius relationship (ln(k) vs 1/T).
 
-The regression showed **strong linearity (R² > 0.90)**, confirming the suitability of the kinetic model.
+The regression showed strong linearity:
 
-From the slope (-Ea/R), the **activation energy (Ea)** was estimated, demonstrating the sensitivity of the system to temperature.
+* **R² = 0.95**
 
-This model enables:
+From the Arrhenius slope:
 
-- Shelf-life extrapolation for non-tested temperatures  
-- Prediction of product behavior under different logistics scenarios  
-- Application of **Accelerated Shelf-Life Testing (ASLT)**  
+[
+\text{slope} = -\frac{E_a}{R}
+]
+
+The **activation energy (Eₐ)** was estimated as:
+
+* **Eₐ ≈ 40.1 kJ/mol**
+
+This value indicates a **moderate-to-high temperature sensitivity**, meaning that relatively small increases in temperature significantly accelerate viscosity degradation.
+
+---
+
+### 🔮 Shelf-life Prediction (New Scenario)
+
+Using the Arrhenius model, a new storage condition was simulated:
+
+* **30°C → k ≈ 1.02**
+* **Estimated shelf life → ~16.6 months**
+
+This demonstrates the ability to:
+
+* Predict shelf life without real-time experiments
+* Support decision-making in intermediate storage conditions
+* Apply Accelerated Shelf-Life Testing (ASLT) principles
 
 ---
 
@@ -98,11 +121,11 @@ This model enables:
 
 Temperature was identified as the primary driver of viscosity degradation.
 
-Higher temperatures increase molecular mobility and accelerate structural breakdown, leading to a faster loss of consistency.
+Higher temperatures increase molecular mobility and accelerate structural breakdown, leading to faster consistency loss.
 
-The degradation profile indicates a temperature-dependent system consistent with physicochemical degradation mechanisms in semi-solid foods.
+The degradation behavior follows a temperature-dependent kinetic model consistent with semi-solid food systems.
 
-The relatively low variability between batches reinforces the robustness of the dataset and the reliability of the predictive model.
+The relatively low variability between batches reinforces the robustness of the dataset and supports the reliability of the predictive model.
 
 ---
 
@@ -110,40 +133,47 @@ The relatively low variability between batches reinforces the robustness of the 
 
 Transitioning from Excel to Python enabled a more robust and scalable analytical approach:
 
-### Complex Data Handling  
-Using Pandas (e.g., `ffill()` and string normalization) automated the cleaning of manually collected data, preventing inconsistencies such as "25 C" vs "25°C".
+### Complex Data Handling
 
-### Statistical Rigor  
-With `scipy.stats`, it was possible to extract **R², standard errors, and p-values**, ensuring proper validation of regression models.
+Using Pandas automated cleaning of manually collected data and removed inconsistencies.
 
-### Arrhenius Predictive Modeling  
-Automatic temperature conversion to Kelvin and logarithmic linearization allowed accurate estimation of the **activation energy (Ea)**.
+### Statistical Rigor
 
-### Variability Visualization  
-Automated plotting of standard deviation and error bars enabled simultaneous analysis of multiple batches, which would be time-consuming manually.
+With `scipy.stats`, it was possible to extract **R² and regression parameters**, ensuring proper model validation.
 
-The integration of **Pandas, Matplotlib, and SciPy** transformed raw experimental data into **actionable insights**, enabling predictive modeling of shelf life across different storage conditions.
+### Arrhenius Predictive Modeling
+
+Temperature conversion to Kelvin and logarithmic transformation enabled estimation of:
+
+* Degradation constants (k)
+* **Activation energy (Eₐ)**
+* Shelf-life extrapolation
+
+### Variability Analysis
+
+Aggregation and visualization enabled efficient analysis of multiple batches.
+
+The integration of **Pandas, Matplotlib, and SciPy** transformed raw experimental data into **predictive and actionable insights**.
 
 ---
 
 ## Conclusion
 
-This project demonstrates how data analysis can be integrated with food science to evaluate product stability in a structured, quantitative, and predictive way.
+This project demonstrates how data analysis and kinetic modeling can be combined to evaluate product stability in a structured and predictive way.
 
-The results highlight temperature as a critical factor affecting viscosity degradation and validate the use of kinetic modeling for shelf-life estimation.
+Key outcomes:
 
-This approach enables:
+* Quantification of temperature impact on degradation
+* Estimation of activation energy (Eₐ)
+* Reliable shelf-life estimation under tested conditions
+* **Prediction of shelf life at new temperatures (e.g., 30°C)**
 
-- Reduction of real-time experimental testing  
-- Use of Accelerated Shelf-Life Testing (ASLT)  
-- Early prediction of product instability  
-
-Such analyses are directly applicable in industrial environments, supporting better decision-making, process optimization, and product quality control.
+This approach reduces reliance on long-term experimental studies and supports faster, data-driven decision-making in food systems.
 
 ---
 
 ## Author
 
-**Marina Mendonça**  
+**Marina Mendonça**
 Food Science Data Analyst
 
