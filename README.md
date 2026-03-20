@@ -102,7 +102,7 @@ This value indicates a **moderate-to-high temperature sensitivity**, meaning tha
 
 ---
 
-### 🔮 Shelf-life Prediction (New Scenario)
+###  Shelf-life Prediction (New Scenario)
 
 Using the Arrhenius model, a new storage condition was simulated:
 
